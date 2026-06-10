@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, ref, onMounted } from "vue";
+import { computed, ref, onMounted, onUnmounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { Activity, Settings as SettingsIcon, Zap, Cpu } from "lucide-vue-next";
+import { Activity, Settings as SettingsIcon, Zap, Cpu } from "@lucide/vue";
 import { useWeight } from "@/composables/useWeight";
 
 const router = useRouter();
@@ -9,9 +9,12 @@ const route = useRoute();
 const { profile, stats } = useWeight();
 
 const now = ref(new Date());
+let timerId: ReturnType<typeof setInterval> | undefined;
 onMounted(() => {
-  const id = setInterval(() => (now.value = new Date()), 1000 * 30);
-  return () => clearInterval(id);
+  timerId = setInterval(() => (now.value = new Date()), 1000 * 30);
+});
+onUnmounted(() => {
+  if (timerId !== undefined) clearInterval(timerId);
 });
 
 const clock = computed(() => {

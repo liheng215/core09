@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { Settings, Ruler, Target, User, Download, Trash2, AlertTriangle, CalendarX } from "lucide-vue-next";
+import { Settings, Ruler, Target, User, Download, Trash2, AlertTriangle, CalendarX } from "@lucide/vue";
 import { useWeight } from "@/composables/useWeight";
 
 const { profile, updateProfile, clearBeforeDate, resetData, exportJSON, records } = useWeight();
@@ -102,8 +102,8 @@ function doReset() {
       </div>
 
       <div v-if="!confirmReset" class="mt-4 flex flex-wrap items-center gap-3">
-        <button class="cyber-btn border-rose-400/40 text-rose-300" @click="clearBeforeDate('2026-06-01')">
-          <CalendarX :size="14" /> 清除 6 月 1 日前数据
+        <button class="cyber-btn border-rose-400/40 text-rose-300" @click="clearBeforeDate('2026-06-08')">
+          <CalendarX :size="14" /> 清除 6 月 8 日前数据
         </button>
         <button class="cyber-btn border-rose-400/40 text-rose-300" @click="confirmReset = true">
           <Trash2 :size="14" /> 清除全部记录

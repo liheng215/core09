@@ -7,7 +7,7 @@ import {
   Activity,
   Scale,
   Flame,
-} from "lucide-vue-next";
+} from "@lucide/vue";
 import type { Profile, WeightStats } from "@/types/weight";
 
 const props = defineProps<{ stats: WeightStats; profile: Profile }>();
@@ -31,7 +31,7 @@ const cards = computed(() => {
     },
     {
       title: "累计变化",
-      value: stats.delta ? `${stats.delta > 0 ? "+" : ""}${stats.delta} kg` : "—",
+      value: stats.delta !== undefined ? `${stats.delta > 0 ? "+" : ""}${stats.delta} kg` : "—",
       sub: stats.delta < 0 ? "正在下降" : stats.delta > 0 ? "正在上升" : "持平",
       icon: stats.delta <= 0 ? TrendingDown : TrendingUp,
       accent: stats.delta <= 0 ? "from-emerald-400 to-cyan-500" : "from-pink-500 to-rose-500",

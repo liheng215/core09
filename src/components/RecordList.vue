@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { Trash2, SortAsc, SortDesc, ListChecks } from "lucide-vue-next";
+import { Trash2, SortAsc, SortDesc, ListChecks } from "@lucide/vue";
 import type { WeightRecord } from "@/types/weight";
 
 const props = defineProps<{ records: WeightRecord[] }>();

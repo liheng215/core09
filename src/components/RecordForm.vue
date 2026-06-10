@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { Plus, Weight, Calendar, PenLine } from "lucide-vue-next";
+import { Plus, Weight, Calendar, PenLine } from "@lucide/vue";
 
 const props = defineProps<{ todayWeight?: number }>();
 const emit = defineEmits<{ submit: [payload: { date: string; weight: number; note?: string }] }>();
