@@ -167,6 +167,14 @@ export function useWeight() {
     profile.value = { ...profile.value, ...next };
   }
 
+  function clearBeforeDate(dateStr: string) {
+    const cutoff = new Date(dateStr + "T00:00:00").getTime();
+    records.value = records.value.filter((r) => {
+      const d = new Date(r.date + "T00:00:00").getTime();
+      return d >= cutoff;
+    });
+  }
+
   function resetData() {
     records.value = [];
   }
@@ -190,6 +198,7 @@ export function useWeight() {
     addRecord,
     removeRecord,
     updateProfile,
+    clearBeforeDate,
     resetData,
     exportJSON,
   };

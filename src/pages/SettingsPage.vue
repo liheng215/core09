@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import { Settings, Ruler, Target, User, Download, Trash2, AlertTriangle } from "lucide-vue-next";
+import { Settings, Ruler, Target, User, Download, Trash2, AlertTriangle, CalendarX } from "lucide-vue-next";
 import { useWeight } from "@/composables/useWeight";
 
-const { profile, updateProfile, resetData, exportJSON, records } = useWeight();
+const { profile, updateProfile, clearBeforeDate, resetData, exportJSON, records } = useWeight();
 
 const name = ref(profile.value.name);
 const height = ref(profile.value.height);
@@ -101,7 +101,10 @@ function doReset() {
         </div>
       </div>
 
-      <div v-if="!confirmReset" class="mt-4">
+      <div v-if="!confirmReset" class="mt-4 flex flex-wrap items-center gap-3">
+        <button class="cyber-btn border-rose-400/40 text-rose-300" @click="clearBeforeDate('2026-06-01')">
+          <CalendarX :size="14" /> 清除 6 月 1 日前数据
+        </button>
         <button class="cyber-btn border-rose-400/40 text-rose-300" @click="confirmReset = true">
           <Trash2 :size="14" /> 清除全部记录
         </button>
